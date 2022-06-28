@@ -34,9 +34,16 @@ export class PersonaProvider
 
      UpdatePersona(persona: Persona): Observable<any>{
 
+        const comando = {
+            "id": persona.id,
+            "nombre": persona.nombre,
+            "apellido": persona.apellido,
+            "dni": persona.dni
+        };
+
         const url = this.apiUrlBase + "api/persona/UpdatePersona";
         const header = {"content-type": "application/json"};
-        const body = JSON.stringify(persona);
+        const body = JSON.stringify(comando);
         return this.http.put(url, body, {'headers': header});
     } 
 
